@@ -9,3 +9,13 @@ function App() {
 }
 
 export default App
+
+/* pages
+
+  - dashboard (homepage) -> list out all projects
+  - login
+  - signup
+  - create
+  - project (project details)
+
+*/
