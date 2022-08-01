@@ -33,3 +33,9 @@
   text-decoration: none;
   margin-right: 20px;
 }
+
+.navbar a:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
