@@ -3,6 +3,9 @@ import { useState } from 'react'
 // styles
 import './Create.css'
 
+// react component
+import Select from 'react-select'
+
 export default function Create() {
   const [name, setName] = useState('')
   const [details, setDetails] = useState('')
