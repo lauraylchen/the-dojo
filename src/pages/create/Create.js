@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useCollection } from '../../hooks/useCollection'
 
 // react component
 import Select from 'react-select'
@@ -15,15 +16,28 @@ const categories = [
 ]
 
 export default function Create() {
+  // form field values
   const [name, setName] = useState('')
   const [details, setDetails] = useState('')
   const [dueDate, setDueDate] = useState('')
   const [category, setCategory] = useState('')
   const [assignedUsers, setAssignedUsers] = useState([])
 
+  const { documents } = useCollection('users')
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    if(documents) {
+      const options = documents.map((user) => {
+        return { value: user, label: user.displayName }
+      })
+      setUsers(options)
+    }
+  }, [documents])
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    (name, details, dueDate, category.value)
+    (name, details, dueDate, category.value, assignedUsers)
   }
 
   return (
@@ -66,7 +80,11 @@ export default function Create() {
         </label>
         <label>
           <span>Assign To:</span>
-          {/* assignee select here */}
+          <Select
+            options={users}
+            onChange={(option) => setAssignedUsers(option)}
+            isMulti
+          />
         </label>
         <button className='btn'>Add Project</button>
       </form>
