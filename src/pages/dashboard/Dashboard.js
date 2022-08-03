@@ -3,6 +3,9 @@ import { useCollection } from '../../hooks/useCollection'
 // styles
 import './Dashboard.css'
 
+// components
+import ProjectList from '../../components/ProjectList'
+
 export default function Dashboard() {
   const { documents, error } = useCollection('projects')
 
@@ -10,9 +13,7 @@ export default function Dashboard() {
     <div>
       <h2 className="page-title">Dashboard</h2>
       {error && <p className="error">{error}</p>}
-      {documents && documents.map(doc => (
-        <p key={doc.id}>{doc.name}</p>
-      ))}
+      {documents && <ProjectList projects={documents} />}
     </div>
   )
 }
