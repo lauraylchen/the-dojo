@@ -4,7 +4,7 @@ import { useCollection } from '../hooks/useCollection'
 import './OnlineUsers.css'
 
 // components
-import Avatar from '../components/Avatar'
+import Avatar from './Avatar'
 
 export default function OnlineUsers() {
   const { documents, error } = useCollection('users')
