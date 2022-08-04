@@ -9,9 +9,6 @@
 
 .user-list h2 {
   text-align: right;
-  margin-bottom: 40px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #EEE;
   font-size: 1.2em;
 }
 
@@ -36,4 +33,22 @@
   background: #0EBB50;
   border-radius: 50%;
   margin-top: 2px;
+}
+
+/* close button */
+.user-list .header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #EEE;
+}
+.closeicon {
+  width: 20px;
+  filter: invert(25%);
+  cursor: pointer;
+}
+
+.closeicon:hover {
+  filter: invert(50%);
 }

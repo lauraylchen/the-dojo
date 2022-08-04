@@ -1,7 +1,29 @@
 .App {
   display: flex;
+  position: relative;
 }
 .App .container{
   flex-grow: 1;
   padding: 0 60px;
+}
+
+/* open OnlineUsers component */
+.openbtn{
+  position: absolute;
+  right: 0;
+  top: 100px;
+  padding: 10px 20px;
+  width: 150px;
+  border: none;
+  background-color: var(--primary-color);
+  border-radius: 20px 0 0 20px;
+  color: var(--bg-color);
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  text-align: left;
+}
+
+.openbtn:hover{
+  width: 200px;
 }

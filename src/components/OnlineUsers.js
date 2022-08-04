@@ -1,17 +1,25 @@
 import { useCollection } from '../hooks/useCollection'
 
-// styles
+// styles & images
 import './OnlineUsers.css'
+import CloseIcon from '../assets/close_icon.svg'
 
 // components
 import Avatar from './Avatar'
 
-export default function OnlineUsers() {
+export default function OnlineUsers({ setOpen }) {
   const { documents, error } = useCollection('users')
+
+  const closeOnlineUsers = () => {
+    setOpen(false)
+  }
 
   return (
     <div className='user-list'>
-      <h2>All Users</h2>
+      <div className="header">
+        <img src={CloseIcon} alt="close icon" class="closeicon" onClick={closeOnlineUsers} />
+        <h2>All Users</h2>
+      </div>
       {error && <div className="error">{error}</div>}
       {documents && documents.map((user) => (
         <div key={user.id} className='user-list-item'>

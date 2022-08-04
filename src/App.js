@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext'
+import { useState } from 'react'
 
 // styles
 import './App.css'
@@ -18,6 +19,11 @@ import OnlineUsers from './components/OnlineUsers'
 
 function App() {
   const { user, authIsReady } = useAuthContext()
+  const [open, setOpen] = useState(false)
+
+  const openOnlineUsers = () => {
+    setOpen(true)
+  }
 
   return (
     <div className="App">
@@ -26,6 +32,7 @@ function App() {
           {user && <Sidebar />}
           <div className="container">
             <Navbar />
+            {!open && user && <button className="openbtn" onClick={openOnlineUsers}>All Users</button>}
             <Switch>
               <Route exact path='/'>
                 {!user && <Redirect to='/login' />}
@@ -49,7 +56,7 @@ function App() {
               </Route>
             </Switch>
           </div>
-          {user && <OnlineUsers />}
+          {open && user && <OnlineUsers setOpen={setOpen} />}
         </BrowserRouter>
       )}
     </div>
